@@ -12,8 +12,15 @@ namespace AspNet_Task.Web
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            var productDbConnectionString = builder.Configuration.GetConnectionString("ProductDbConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString, sqlOptions =>
+                {
+                    sqlOptions.EnableRetryOnFailure();
+                }));
+            builder.Services.AddDbContext<ProductDbContext>(options =>
+                options.UseSqlServer(productDbConnectionString, sqlOptions =>
                 {
                     sqlOptions.EnableRetryOnFailure();
                 }));
