@@ -116,12 +116,32 @@ namespace AspNet_Task.Web.Areas.Identity.Pages.Account
                 var user = CreateUser();
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User created a new account with password.");
+
+                    if (await _userManager.Users.CountAsync() == 1)
+                    {
+                        await _userManager.AddToRoleAsync(user, "Administrator");
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, "StandardUser");
+                    }
+
+                    // Code for sending confirmation email and redirecting user
+
+                    return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                }
+
                 // Code for handling registration errors
             }
 
             // If we got this far, something failed, redisplay the form
             return Page();
         }
+
 
         private IdentityUser CreateUser()
         {
@@ -136,6 +156,7 @@ namespace AspNet_Task.Web.Areas.Identity.Pages.Account
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
+
         private IUserEmailStore<IdentityUser> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
