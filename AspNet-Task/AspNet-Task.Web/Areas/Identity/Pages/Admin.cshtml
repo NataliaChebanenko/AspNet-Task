@@ -1,0 +1,12 @@
+﻿@page "/admin"
+@model AspNet_Task.Web.Areas.Identity.Pages.AdminModel
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h2>Users and Roles</h2>
+<partial name="_UserRolesPartial" model="@Model.UserRoles" />
+
