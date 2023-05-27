@@ -115,6 +115,9 @@ namespace AspNet_Task.Web.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                user.Email = Input.Email;
+                user.UserName = Input.Email;
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
