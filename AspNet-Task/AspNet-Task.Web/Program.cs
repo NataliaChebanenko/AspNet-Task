@@ -32,6 +32,8 @@ namespace AspNet_Task.Web
 
             var app = builder.Build();
 
+            CreateRoles(app);
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -59,3 +61,25 @@ namespace AspNet_Task.Web
 
             app.Run();
         }
+
+        // Helper method to create roles if they don't exist
+        private static void CreateRoles(IApplicationBuilder app)
+        {
+            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
+            var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            if (!roleManager.RoleExistsAsync("Administrator").Result)
+            {
+                var role = new IdentityRole { Name = "Administrator" };
+                roleManager.CreateAsync(role).Wait();
+            }
+
+            if (!roleManager.RoleExistsAsync("StandardUser").Result)
+            {
+                var role = new IdentityRole { Name = "StandardUser" };
+                roleManager.CreateAsync(role).Wait();
+            }
+        }
+
+    }
+}
