@@ -1,0 +1,45 @@
+﻿@model AspNet_Task.Web.Data.Models.Product
+
+<div class="product-details">
+    <div class="product-images">
+        <div class="main-image">
+            <img src="@Model.ImageUrl" alt="Product Image" />
+        </div>
+        <div class="additional-images">
+            <img src="#" alt="Additional Image 1" />
+            <img src="#" alt="Additional Image 2" />
+            <img src="#" alt="Additional Image 3" />
+        </div>
+    </div>
+    <div class="product-info">
+        <div class="text">
+            <h2>@Model.Name</h2>
+            <p>@Model.Description</p>
+            <p>Price: @Model.Price SEK</p>
+            <div class="add-to-cart">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button class="btn btn-primary">Add to Cart</button>
+            </div>
+            <p>Color: @Model.Color</p>
+            <p>SKU: @Model.SKU</p>
+            <button class="btn btn-secondary">Add to Wishlist</button>
+            @await Html.PartialAsync("_CategoryPartial", Model.Category)
+            </div>
+    </div>
+</div>
+
+<style>
+    .product-details {
+        display: flex;
+        align-items: center;
+    }
+
+    .product-images {
+        flex: 1;
+    }
+
+    .product-info {
+        flex: 1;
+    }
+</style>

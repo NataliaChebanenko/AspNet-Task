@@ -1,0 +1,25 @@
+﻿@page "/products"
+@model ProductsModel
+@using AspNet_Task.Web.Data.Models
+
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .product-card {
+        width: 300px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h1>Products</h1>
+
+<div class="container">
+    @foreach (var product in Model.Products)
+    {
+        <partial name="_ProductPartial" model="product" />   
+    }
+</div>
