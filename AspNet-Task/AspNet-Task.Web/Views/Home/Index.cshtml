@@ -2,7 +2,63 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- Jumbotron -->
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Our E-commerce Website</h1>
+    <p>Discover amazing products and enjoy a seamless shopping experience.</p>
+    <a class="btn btn-primary btn-lg" href="/products" role="button">Browse Products</a>
+</div>
+
+<!-- Spacer -->
+<div class="py-4"></div>
+
+<!-- Slider: Companies We Work With -->
+<div class="container py-4">
+    <h2 class="text-center">Companies We Work With</h2>
+    <div id="company-slider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <h4 class="text-center">Acme Co.</h4>
+            </div>
+            <div class="carousel-item">
+                <h4 class="text-center">Llama Enterprises</h4>
+            </div>
+            <div class="carousel-item">
+                <h4 class="text-center">Banana Corp</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Spacer -->
+<div class="py-4"></div>
+
+<!-- About Us: Lorem Ipsum Text -->
+<div class="container py-4">
+    <h2 class="text-center">About Us</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis nisi auctor, tincidunt est vitae,
+        vulputate libero. Aliquam dignissim nisi ac efficitur. Phasellus pharetra ante eget nunc bibendum rutrum.
+        Curabitur id interdum ligula. Sed feugiat justo a arcu semper, non condimentum elit cursus. Sed sed orci
+        ultrices, laoreet elit ut, vulputate est. Morbi posuere neque non nibh consectetur, id convallis quam
+        venenatis. Curabitur commodo augue nec risus tincidunt, id blandit urna suscipit.
+    </p>
+</div>
+
+<!-- Spacer -->
+<div class="py-4"></div>
+
+<!-- Newsletter Subscription -->
+<div class="newsletter py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center">Subscribe to Our Newsletter</h2>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email" aria-describedby="subscribe-btn">
+                    <button class="btn btn-primary" type="button" id="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
