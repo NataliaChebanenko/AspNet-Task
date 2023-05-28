@@ -8,18 +8,36 @@
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    
+
     .product-card {
         width: 300px;
         margin-bottom: 20px;
+    }
+    
+    .category-buttons {
+        margin-bottom: 20px;
+    }
+    
+    .category-button {
+        margin-right: 10px;
     }
 </style>
 
 <h1>Products</h1>
 
+<div class="category-buttons">
+    <form method="post">
+        <button type="submit" class="category-button" asp-page-handler="SetCategory" name="category" value="all">All</button>
+        <button type="submit" class="category-button" asp-page-handler="SetCategory" name="category" value="new">New</button>
+        <button type="submit" class="category-button" asp-page-handler="SetCategory" name="category" value="featured">Featured</button>
+        <button type="submit" class="category-button" asp-page-handler="SetCategory" name="category" value="popular">Popular</button>
+    </form>
+</div>
+
+
 <div class="container">
     @foreach (var product in Model.Products)
     {
-        <partial name="_ProductPartial" model="product" />   
+        <partial name="_ProductPartial" model="product" />
     }
 </div>
